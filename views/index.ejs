@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Home</title>
+</head>
+<body>
+  <div class="navbar" style="background-color:lightsteelblue ;">
+          <a class="nav-link active text-light" href="#">Home</a>
+          <a class="nav-link text-light" href="/registro">Registro</a>
+          <a class="nav-link text-light" aria-current="page" href="/login">Login</a>
+          <a class="nav-link text-light" aria-current="page" href="/login">Adicionar</a>
+      </div><br>
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Produtos (<%=dadosProdutos.length%>)
+            </button>
+          </h2>
+          
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <% for (var n=0; n<dadosProdutos.length; n++){%>
+            <div class="accordion-body">Nome: <%=dadosProdutos[n].nome%> Data: <%=dadosProdutos[n].data.getDate()+1%>-<%=dadosProdutos[n].data.getMonth()+1%>-<%=dadosProdutos[n].data.getFullYear()%></div>
+            <a href="/consumidos?id=<%=dadosProdutos[n]._id%>" class="btn btn-success">Consumido</a>
+            <a href="/descartados?id=<%=dadosProdutos[n]._id%>" class="btn btn-info text-light">Descartado</a>
+            <a href="/alterar?id=<%=dadosProdutos[n]._id%>" class="btn btn-warning text-light">Alterar</a>
+            <a href="/excluir?id=<%=dadosProdutos[n]._id%>" class="btn btn-danger">Excluir</a> 
+            <%}%>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+              Vence essa semana (<%=dadosSemana.length%>)
+            </button>
+          </h2>
+          <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <% for (var n=0; n<dadosSemana.length; n++){%>
+                <div class="accordion-body">Nome: <%=dadosSemana[n].nome%> Data: <%=dadosSemana[n].data.getDate()+1%>-<%=dadosSemana[n].data.getMonth()+1%>-<%=dadosSemana[n].data.getFullYear()%></div>
+                <a href="/consumidos?id=<%=dadosSemana[n]._id%>" class="btn btn-success">Consumido</a>
+                <a href="/descartados?id=<%=dadosSemana[n]._id%>" class="btn btn-info text-light">Descartado</a>
+                <a href="/alterar?id=<%=dadosSemana[n]._id%>" class="btn btn-warning text-light">Alterar</a>
+                <a href="/excluir?id=<%=dadosSemana[n]._id%>" class="btn btn-danger">Excluir</a>  
+                <%}%>
+            </div>
+          </div> 
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+              Vence esse mes (<%=dadosMes.length%>)
+            </button>
+          </h2>
+          <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <% for (var n=0; n<dadosMes.length; n++){%>
+                <div class="accordion-body">Nome: <%=dadosMes[n].nome%> Data: <%=dadosMes[n].data.getDate()+1%>-<%=dadosMes[n].data.getMonth()+1%>-<%=dadosMes[n].data.getFullYear()%></div>
+                <a href="/consumidos?id=<%=dadosMes[n]._id%>" class="btn btn-success ">Consumido</a>
+                <a href="/descartados?id=<%=dadosMes[n]._id%>" class="btn btn-info text-light">Descartado</a>
+                <a href="/alterar?id=<%=dadosMes[n]._id%>" class="btn btn-warning text-light">Alterar</a>
+                <a href="/excluir?id=<%=dadosMes[n]._id%>" class="btn btn-danger">Excluir</a>   
+                <%}%>
+            </div>
+          </div> 
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Vencidos (<%=dadosVencidos.length%>)
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <% for (var n=0; n<dadosVencidos.length; n++){%>
+                <div class="accordion-body">Nome: <%=dadosVencidos[n].nome%> Data: <%=dadosVencidos[n].data.getDate()+1%>-<%=dadosVencidos[n].data.getMonth()+1%>-<%=dadosVencidos[n].data.getFullYear()%></div>
+                <a href="/descartados?id=<%=dadosVencidos[n]._id%>" class="btn btn-success">Descartado</a>
+                <a href="/alterar?id=<%=dadosVencidos[n]._id%> " class="btn btn-warning text-light">Alterar</a>
+                <a href="/excluir?id=<%=dadosVencidos[n]._id%>" class="btn btn-danger">Excluir</a> 
+                <%}%>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              Consumidos (<%=dadosExcluidos.length%>)
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <% for (var n=0; n<dadosExcluidos.length; n++){%>
+                <div class="accordion-body">Nome: <%=dadosExcluidos[n].nome%> Data: <%=dadosExcluidos[n].data.getDate()+1%>-<%=dadosExcluidos[n].data.getMonth()+1%>-<%=dadosExcluidos[n].data.getFullYear()%></div>
+                <a href="/desfazer?id=<%=dadosExcluidos[n]._id%>" class="btn btn-warning text-light">Desfazer</a>
+                <a href="/excluir?id=<%=dadosExcluidos[n]._id%>" class="btn btn-danger">Excluir</a> 
+                <%}%>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+              Descartados (<%=dadosDescartados.length%>)
+            </button>
+          </h2>
+          <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <% for (var n=0; n<dadosDescartados.length; n++){%>
+                <div class="accordion-body">Nome: <%=dadosDescartados[n].nome%> Data: <%=dadosDescartados[n].data.getDate()+1%>-<%=dadosDescartados[n].data.getMonth()+1%>-<%=dadosDescartados[n].data.getFullYear()%></div>
+                <a href="/desfazer?id=<%=dadosDescartados[n]._id%>" class="btn btn-success">Desfazer</a>
+                <a href="/alterar?id=<%=dadosDescartados[n]._id%> " class="btn btn-info text-light">Alterar</a>
+                <a href="/excluir?id=<%=dadosDescartados[n]._id%>" class="btn btn-danger">Excluir</a> 
+                <%}%>
+            </div>
+          </div> 
+        </div>
+
+      </div>
+</body>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</html>
